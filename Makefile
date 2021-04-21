@@ -6,7 +6,7 @@
 #    By: pdruart <pdruart@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/28 14:41:56 by pdruart       #+#    #+#                  #
-#    Updated: 2021/04/14 17:15:01 by pdruart       ########   odam.nl          #
+#    Updated: 2021/04/21 17:09:53 by pdruart       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,6 @@ bonus:
 	$(MAKE) WITH_BONUS=1 all
 
 so: $(OBJ_FILES)
-	$(LINK.c) $(CFLAGS) -o libft.so -shared $(OBJ_FILES) $(PART_BONUS)
+	$(LINK.c) $(CFLAGS) -o $(NAME).so -shared $(OBJ_FILES) $(PART_BONUS)
 
 .PHONY: all clean fclean re bonus so
