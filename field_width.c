@@ -1,6 +1,18 @@
 #include "ft_printf.h"
+#include "libft/libft.h"
 
-int	get_width(const char *str, int *position)
+int	get_field_width(const char *str, int *position, va_list *args)
 {
-	return (0);
+	int	width;
+
+	width = ft_atoi(&(str[*position]));
+	if (str[*position] == '*')
+	{
+		width = va_arg(*args, int);
+		(*position)++;
+	}
+	else
+		while(ft_isdigit(str[*position]))
+			(*position)++;
+	return (width);
 }
