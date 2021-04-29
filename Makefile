@@ -1,5 +1,5 @@
 NAME = libftprintf.a
-PART_BASE = ft_printf.o
+PART_BASE = ft_printf.o flags.o
 PART_BONUS = 
 HEADER_FILES = ft_printf.h
 CFLAGS = -Wall -Werror -Wextra
@@ -35,7 +35,7 @@ bonus:
 	$(MAKE) WITH_BONUS=1 all
 
 run:
-	make && $(CC) $(CFLAGS) main.c libftprintf.a -o a.out && ./a.out
+	$(MAKE) && $(CC) $(CFLAGS) main.c libftprintf.a -o a.out && ./a.out
 
 so: $(OBJ_FILES)
 	$(LINK.c) $(CFLAGS) -o $(NAME).so -shared $(OBJ_FILES) $(PART_BONUS)

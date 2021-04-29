@@ -1,9 +1,9 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;}
 {\colortbl;\red255\green255\blue255;\red85\green142\blue40;\red251\green2\blue255;\red251\green2\blue7;
-\red85\green142\blue40;\red0\green0\blue0;}
+\red0\green0\blue0;}
 {\*\expandedcolortbl;;\cssrgb\c39975\c61335\c20601;\cssrgb\c100000\c25279\c100000;\cssrgb\c100000\c14913\c0;
-\cssrgb\c39975\c61335\c20601;\cssrgb\c0\c0\c0;}
+\cssrgb\c0\c0\c0;}
 \margl1440\margr1440\vieww15520\viewh8400\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
@@ -11,7 +11,7 @@
 \cf2 Mandatory\cf0  | \cf3 Bonus\cf0  | \cf4 Not mentioned = not necessary but ya can\cf0 \
 \
 stringle = \cf2 string containing 0..n conversions\cf0 \
-args = \cf5 0..n+ arguments to be inserted in the conversions of unknown/differing types that are determined by the conversions\cf0 \
+args = \cf2 0..n+ arguments to be inserted in the conversions of unknown/differing types that are determined by the conversions\cf0 \
 \
 conversion = \cf2 %[FLAGS][field width][precision]\cf3 [LENGTH MODIFIER]\cf2 <CONVERSION SPECIFIER>\cf0 \
 [] optional	<> required\
@@ -20,7 +20,7 @@ FLAGS =	\cf2 \'91-\'91\cf0 	result is left-justified\
 		\cf3 \'91+\'92\cf0 	result of a signed conversion always has a + or - in front of positive & negative numbers\
 		\cf3 \'91 \'91\cf0 	result of a signed conversion is prefixed by a space if there\'92s no sign yet gets overriden by \'91+\'92\
 		\cf3 \'91#\'92\cf0 	result is converted to an alternative form differs per conversion specifier\
-		\cf2 \'910\'92\cf0 	leading/following zeroes are used as padding instead of spaces\
+		\cf2 \'910\'92\cf0 	leading (not following) zeroes are used as padding instead of spaces\
 \
 field width & precision: \cf2 a positive decimal integer or a \'91*\'92 (asterisk) where an asterisk would be replaced by the next supplied argument (e.g. printf(\'93%*.*s\'94, -3, 10, \'93a\'94))\cf0 \
 \
@@ -50,10 +50,10 @@ CONVERSION SPECIFIER =	\cf2 \'91d\'92\cf0 ,\cf2 \'92i\'92\cf0 		the int argument
 \f1\b u
 \f0\b0 nsigned decimal\
 					\cf3 \'91f\'92\cf0 ,\cf3 \'92F\'92\cf0 		double argument (floating point number) converted to decimal notation style\
-					\cf3 \'91e\'92\cf0 ,\cf3 \'92E\'92\cf0 		double argument (floating point number) converted to scientific notation (d.dddde\cf6 \expnd0\expndtw0\kerning0
+					\cf3 \'91e\'92\cf0 ,\cf3 \'92E\'92\cf0 		double argument (floating point number) converted to scientific notation (d.dddde\cf5 \expnd0\expndtw0\kerning0
 \'b1\cf0 \kerning1\expnd0\expndtw0 dd)\
 					\cf3 \'91g\'92\cf0 ,\cf3 \'92G\'92\cf0 		magic? read the lang spec for this one\
-					\cf4 \'91a\'92\cf0 ,\cf4 \'92A\'92\cf0 		double argument (floating point number) converted to hex scientific (0xh.hhhhp\cf6 \expnd0\expndtw0\kerning0
+					\cf4 \'91a\'92\cf0 ,\cf4 \'92A\'92\cf0 		double argument (floating point number) converted to hex scientific (0xh.hhhhp\cf5 \expnd0\expndtw0\kerning0
 \'b1d\cf0 \kerning1\expnd0\expndtw0 )\
 					\cf2 \'92c\'92\cf0 		if there\'92s no (ell)\'92l\'92 LENGTH MODIFIER the int arg conv to unchar otherwise read the lang spec\
 					\cf2 \'92s\'92\cf0 		if there\'92s no (ell)\'92l\'92 LENGTH MODIFIER the arg shall be a pointer to the initial pos of a char array\
