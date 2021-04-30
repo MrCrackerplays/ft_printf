@@ -12,7 +12,7 @@ int	get_field_width(const char *str, int *position, va_list *args)
 		(*position)++;
 	}
 	else
-		while(ft_isdigit(str[*position]))
+		while (ft_isdigit(str[*position]))
 			(*position)++;
 	return (width);
 }
