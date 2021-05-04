@@ -31,9 +31,9 @@ t_conv	*prep_conv(va_list *arg, t_conv *data, const char *str, int *pos)
 	return (data);
 }
 
-int	prnt_conv(va_list *args, t_conv *data, const char *str, int *position)
+int	prnt_conv(va_list *arg, t_conv *data)
 {
-	const	char*(*parse[])(t_conv *) = {parse_specifier_d,
+	static	char*(*parse[])(va_list *, t_conv *) = {parse_specifier_d,
 			parse_specifier_i, parse_specifier_u, parse_specifier_x,
 			parse_specifier_X, parse_specifier_c, parse_specifier_s,
 			parse_specifier_p, parse_specifier_percent};
@@ -43,7 +43,10 @@ int	prnt_conv(va_list *args, t_conv *data, const char *str, int *position)
 	i = get_specifier_index(data->specifier);
 	if (i < 0)
 		return (-1);
-	print = parse[i](data);
+	print = parse[i](arg, data);
+	if (print == NULL)
+		return (-1);
+	ft_putstr_fd(print, 1);
 	return (1);
 }
 
@@ -69,7 +72,8 @@ int	ft_printf(const char *str, ...)
 		if (str[position] == '\0')
 			break ;
 		position++;
-		if (prnt_conv(&args, data, str, &position) == -1)
+		prep_conv(&args, data, str, &position);
+		if (prnt_conv(&args, data) == -1)
 			return (-1);
 	}
 	va_end(args);

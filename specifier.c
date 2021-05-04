@@ -15,11 +15,12 @@ int	get_specifier_index(char c)
 
 char	get_specifier(const char *str, int *position)
 {
-	char	character;
+	char	character[2];
 
-	if (ft_strnstr(g_specifiers, str[*position], 50) == 1)
+	character[0] = str[*position];
+	character[1] = '\0';
+	if (ft_strnstr(g_specifiers, &(character[0]), 50) == NULL)
 		return ('\0');
-	character = str[*position];
 	(*position)++;
-	return (character);
+	return (character[0]);
 }

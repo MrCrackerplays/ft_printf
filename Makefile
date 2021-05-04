@@ -1,5 +1,5 @@
 NAME = libftprintf.a
-PART_BASE = ft_printf.o flags.o field_width.o precision.o
+PART_BASE = ft_printf.o flags.o field_width.o precision.o specifier.o parse_specifier_s.o
 PART_BONUS = 
 HEADER_FILES = ft_printf.h
 CFLAGS = -Wall -Werror -Wextra

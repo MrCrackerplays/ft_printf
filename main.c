@@ -4,7 +4,7 @@
 
 int	main(void)
 {
-	   printf("yes %f a %d", 111.234, 12);
+	   printf("yes %8.4s a %d", "abcdefgh", 12);
 	   printf("\n");
-	ft_printf("%--0-1.5d-999e a %-dnk l", 11, 12);
+	ft_printf("yes %%8.4s a %d", "abcdefgh", 12);
 }

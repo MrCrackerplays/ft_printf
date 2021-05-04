@@ -29,3 +29,14 @@ int	get_flags(const char *str, int *position)
 	}
 	return (flags);
 }
+
+int	is_flag_set(int flag, char c)
+{
+	int	bit;
+
+	bit = get_flag_value(c);
+	if (bit == -1)
+		return (0);
+	bit = (flag >> bit) & 1;
+	return (bit);
+}
