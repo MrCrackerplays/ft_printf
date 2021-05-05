@@ -22,19 +22,29 @@ int	count_digits(int number, int flags)
 	return (i);
 }
 
-char	*rev_copy(char *into, char *from, int len_into)
+char	*rev_copy(char *into, int input, int len_into)
 {
-	int	len_from;
+	int		len_from;
+	char	*itoa;
 
-	len_from = ft_strlen(from);
-	if (len_from > len_into)
+	if (input < 0)
+		input = -input;
+	itoa = ft_itoa(input);
+	if (itoa == NULL)
 		return (NULL);
+	len_from = ft_strlen(itoa);
+	if (input < 0)
+	{
+		ft_memmove(itoa, &(itoa[1]), len_from);
+		len_from--;
+	}
 	while (len_from > 0)
 	{
-		into[len_into - 1] = from[len_from - 1];
+		into[len_into - 1] = itoa[len_from - 1];
 		len_into--;
 		len_from--;
 	}
+	free(itoa);
 	return (into);
 }
 
@@ -43,7 +53,6 @@ char	*parse_specifier_d(va_list *arg, t_conv *data)
 	int		input;
 	int		count;
 	char	*print;
-	char	*itoa;
 
 	if (data->specifier != 'd')
 		return (NULL);
@@ -57,8 +66,12 @@ char	*parse_specifier_d(va_list *arg, t_conv *data)
 		print = create_width_print(data->field_width, ' ');
 	if (print == NULL)
 		return (NULL);
-	itoa = ft_itoa(input);
-	rev_copy(print, itoa, data->field_width);
-	free(itoa);
+	rev_copy(print, input, data->field_width);
+	if (input < 0)
+		print[0] = '-';
+	else if (is_flag_set(data->flags, ' '))
+		print[0] = ' ';
+	else if (is_flag_set(data->flags, '+'))
+		print[0] = '+';
 	return (print);
 }
