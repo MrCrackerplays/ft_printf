@@ -73,5 +73,6 @@ char	*parse_specifier_d(va_list *arg, t_conv *data)
 		print[0] = ' ';
 	else if (is_flag_set(data->flags, '+'))
 		print[0] = '+';
+		// >:( alles van precision moet nog, en de prefix moved met de precision mee dus deze ifelsejes won't do as is (misshien [0] naar iets van [field_width-precision]? en wanneer precision -1 is doe precision=field_width)
 	return (print);
 }
