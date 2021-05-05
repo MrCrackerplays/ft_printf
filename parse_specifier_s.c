@@ -11,16 +11,9 @@ char	*apply_parse(char *print, char *input, t_conv *data, int len)
 	left = is_flag_set(data->flags, '-');
 	while (i < data->field_width)
 	{
-		if (left)
-		{
-			if (i < len)
-				print[i] = input[i];
-			else
-				print[i] = ' ';
-		}
-		else if (i < data->field_width - len)
-			print[i] = ' ';
-		else
+		if (left && i < len)
+			print[i] = input[i];
+		else if (!left && i >= data->field_width - len)
 			print[i] = input[i - (data->field_width - len)];
 		i++;
 	}
@@ -42,32 +35,11 @@ char	*parse_specifier_s(va_list *arg, t_conv *data)
 		length = data->precision;
 	if (length > data->field_width)
 		data->field_width = length;
-	print = calloc((data->field_width + 1), sizeof(char));
+	print = create_width_print(data->field_width, ' ');
 	if (print == NULL)
 		return (NULL);
 	print = apply_parse(print, input, data, length);
 	return (print);
-}
-
-char	*parse_specifier_c(va_list *arg, t_conv *data)
-{
-	if (arg)
-		data = 0;
-	return (NULL);
-}
-
-char	*parse_specifier_d(va_list *arg, t_conv *data)
-{
-	if (arg)
-		data = 0;
-	return (NULL);
-}
-
-char	*parse_specifier_i(va_list *arg, t_conv *data)
-{
-	if (arg)
-		data = 0;
-	return (NULL);
 }
 
 char	*parse_specifier_p(va_list *arg, t_conv *data)

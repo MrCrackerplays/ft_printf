@@ -50,18 +50,12 @@ int	prnt_conv(va_list *arg, t_conv *data)
 	return (1);
 }
 
-int	ft_printf(const char *str, ...)
+int	step_through(const char *str, t_conv *data, va_list *args)
 {
-	int		position;
-	int		start;
-	t_conv	*data;
-	va_list	args;
+	int	position;
+	int	start;
 
 	position = 0;
-	data = ft_calloc(1, sizeof(data));
-	if (data == NULL)
-		return (-1);
-	va_start(args, str);
 	while (str[position] != '\0')
 	{
 		start = position;
@@ -72,10 +66,24 @@ int	ft_printf(const char *str, ...)
 		if (str[position] == '\0')
 			break ;
 		position++;
-		prep_conv(&args, data, str, &position);
-		if (prnt_conv(&args, data) == -1)
+		prep_conv(args, data, str, &position);
+		if (prnt_conv(args, data) == -1)
 			return (-1);
 	}
+	return (1);
+}
+
+int	ft_printf(const char *str, ...)
+{
+	t_conv	*data;
+	va_list	args;
+
+	data = ft_calloc(1, sizeof(data));
+	if (data == NULL)
+		return (-1);
+	va_start(args, str);
+	step_through(str, data, &args);
 	va_end(args);
+	free(data);
 	return (1);
 }
