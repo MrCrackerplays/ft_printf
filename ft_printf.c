@@ -5,16 +5,11 @@
 
 int	print_raw(const char *str, int position, int start)
 {
-	char	*print;
+	int	amount;
 
-	print = ft_calloc(1 + position - start, sizeof(char));
-	if (print == NULL)
-		return (-1);
-	ft_memcpy(print, &(str[start]), position - start);
-	print[position - start] = '\0';
-	ft_putstr_fd(print, 1);
-	free(print);
-	return (1);
+	amount = position - start;
+	write(1, &(str[start]), amount);
+	return (amount);
 }
 
 t_conv	*prep_conv(va_list *arg, t_conv *data, const char *str, int *pos)
@@ -46,44 +41,50 @@ int	prnt_conv(va_list *arg, t_conv *data)
 	print = parse[i](arg, data);
 	if (print == NULL)
 		return (-1);
-	ft_putstr_fd(print, 1);
-	return (1);
+	i = ft_strlen(print);
+	write(1, print, i);
+	return (i);
 }
 
 int	step_through(const char *str, t_conv *data, va_list *args)
 {
 	int	position;
 	int	start;
+	int	len;
+	int	read;
 
 	position = 0;
+	len = 0;
 	while (str[position] != '\0')
 	{
 		start = position;
 		while (str[position] != '%' && str[position] != '\0')
 			position++;
-		if (print_raw(str, position, start) == -1)
-			return (-1);
+		len += print_raw(str, position, start);
 		if (str[position] == '\0')
 			break ;
 		position++;
 		prep_conv(args, data, str, &position);
-		if (prnt_conv(args, data) == -1)
+		read = prnt_conv(args, data);
+		if (read == -1)
 			return (-1);
+		len += read;
 	}
-	return (1);
+	return (len);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	t_conv	*data;
 	va_list	args;
+	int		len;
 
 	data = ft_calloc(1, sizeof(data));
 	if (data == NULL)
 		return (-1);
 	va_start(args, str);
-	step_through(str, data, &args);
+	len = step_through(str, data, &args);
 	va_end(args);
 	free(data);
-	return (1);
+	return (len);
 }

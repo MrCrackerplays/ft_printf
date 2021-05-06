@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 PART_BASE = ft_printf.o flags.o field_width.o precision.o specifier.o \
 	parse_specifier_s.o parse_specifier_c.o parse_specifier_d.o \
-	parse_specifier_i.o
+	parse_specifier_i.o parse_specifier_percent.o
 PART_BONUS = 
 HEADER_FILES = ft_printf.h
 CFLAGS = -Wall -Werror -Wextra
@@ -18,7 +18,6 @@ $(NAME): $(OBJ_FILES)
 	$(MAKE) bonus -C ./libft
 	cp libft/libft.a $(NAME)
 	ar -rcs $(NAME) $(OBJ_FILES)
-	#TODO FINISH UP THIS MAKEFILE BASED ON https://github.com/rchallie/ft_printf/blob/master/Makefile
 
 %.o: %.c $(HEADER_FILES)
 	$(CC) -c $(CFLAGS) -o $@ $<

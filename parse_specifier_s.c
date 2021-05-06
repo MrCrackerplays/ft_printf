@@ -49,13 +49,6 @@ char	*parse_specifier_p(va_list *arg, t_conv *data)
 	return (NULL);
 }
 
-char	*parse_specifier_percent(va_list *arg, t_conv *data)
-{
-	if (arg)
-		data = 0;
-	return (NULL);
-}
-
 char	*parse_specifier_u(va_list *arg, t_conv *data)
 {
 	if (arg)

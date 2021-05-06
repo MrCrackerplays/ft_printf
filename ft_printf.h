@@ -6,7 +6,6 @@
 /* Typedef Structs */
 typedef struct s_conv
 {
-	char	*str;
 	int		flags;
 	int		field_width;
 	int		precision;
