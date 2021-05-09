@@ -41,31 +41,3 @@ char	*parse_specifier_s(va_list *arg, t_conv *data)
 	print = apply_parse(print, input, data, length);
 	return (print);
 }
-
-char	*parse_specifier_p(va_list *arg, t_conv *data)
-{
-	if (arg)
-		data = 0;
-	return (NULL);
-}
-
-char	*parse_specifier_u(va_list *arg, t_conv *data)
-{
-	if (arg)
-		data = 0;
-	return (NULL);
-}
-
-char	*parse_specifier_X(va_list *arg, t_conv *data)
-{
-	if (arg)
-		data = 0;
-	return (NULL);
-}
-
-char	*parse_specifier_x(va_list *arg, t_conv *data)
-{
-	if (arg)
-		data = 0;
-	return (NULL);
-}

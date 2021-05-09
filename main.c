@@ -4,7 +4,11 @@
 
 int	main(void)
 {
-	   printf("\%0*.5%syes %08.3dc a %-8.3d b %8d", 4, -13, -12, -11);
+	int	amount;
+
+	ft_printf("%d", -50);
+	   printf(".%%syes %03.5dc a %-8.3d b %8d c %08d d %d", -130, -12, -11, -10, -1);
 	   printf("\n");
-	ft_printf("\%0*.5%syes %08.3dc a %-8.3d b %8d", 4, -13, -12, -11);
+	amount = ft_printf(".%%syes %03.5dc a %-8.3d b %8d c %08d d %d", -130, -12, -11, -10, -1);
+	printf("\n%d\n", amount);
 }

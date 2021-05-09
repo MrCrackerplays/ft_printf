@@ -22,6 +22,7 @@ t_conv	*prep_conv(va_list *arg, t_conv *data, const char *str, int *pos)
 		data->flags |= 1 << get_flag_value('-');
 	}
 	data->precision = get_precision(str, pos, arg);
+	data->length_mod = 0;
 	data->specifier = get_specifier(str, pos);
 	return (data);
 }
