@@ -1,6 +1,7 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 #include "stdlib.h"
+#include "stdio.h"
 
 int	count_digits(int number, t_conv *data)
 {
@@ -26,55 +27,41 @@ int	count_digits(int number, t_conv *data)
 	return (i + is_prefixed);
 }
 
-// char	*rev_copy(char *into, int input, int len_into)
-// {
-// 	int		len_from;
-// 	char	*itoa;
+char	*fill_precision(int input, int count, t_conv *data)
+{
+	char	*precisioned;
+	char	*itoa;
+	int		len;
 
-// 	if (input < 0)
-// 		input = -input;
-// 	itoa = ft_itoa(input);
-// 	if (itoa == NULL)
-// 		return (NULL);
-// 	len_from = ft_strlen(itoa);
-// 	if (input < 0)
-// 	{
-// 		ft_memmove(itoa, &(itoa[1]), len_from);
-// 		len_from--;
-// 	}
-// 	while (len_from > 0)
-// 	{
-// 		into[len_into - 1] = itoa[len_from - 1];
-// 		len_into--;
-// 		len_from--;
-// 	}
-// 	free(itoa);
-// 	return (into);
-// }
+	precisioned = create_width_print(count, '0');
+	if (precisioned == NULL)
+		return (NULL);
+	itoa = ft_itoa(input);
+	if (itoa == NULL)
+		return (NULL);
+	len = ft_strlen(itoa);
+	if (input < 0)
+		len--;
+	ft_memmove(itoa, &(itoa[1]), len * sizeof(char));
+	ft_memcpy(&(precisioned[count - len]), itoa, len * sizeof(char));
+	printf("#TEKST:%s&GETAL:%i;", precisioned, count);
+	free(itoa);
+	if (input < 0)
+		precisioned[0] = '-';
+	else if (is_flag_set(data->flags, '+'))
+		precisioned[0] = '+';
+	else if (is_flag_set(data->flags, ' '))
+		precisioned[0] = ' ';
+	return (precisioned);
+}
 
-// char	*apply_precision(char *print, t_conv *data, int input)
-// {
-// 	int		start;
-// 	char	prefix;
-// 	char	*precisioned;
-
-// 	if (data->precision == -1)
-// 		data->precision = data->field_width;
-// 	prefix = '\0';
-// 	if (input < 0)
-// 		prefix = '-';
-// 	else if (is_flag_set(data->flags, ' '))
-// 		prefix = ' ';
-// 	else if (is_flag_set(data->flags, '+'))
-// 		prefix = '+';
-// 	start = prefix != '\0';
-// 	precisioned = create_width_print(data->precision, '0');
-// 	ft_memmove(&(print[data->field_width - data->precision]), precisioned, 3);
-// 	free(precisioned);
-// 	if (start)
-// 		print[data->field_width - data->precision - 1] = prefix;
-// 	return (print);
-// }
+void	put_prcsion(char *print, const char *prcsion, t_conv *data, int count)
+{
+	if (is_flag_set(data->flags, '-'))
+		ft_memmove(print, prcsion, count);
+	else
+		ft_memmove(&(print[ft_strlen(print) - count]), prcsion, count);
+}
 
 char	*parse_specifier_d(va_list *arg, t_conv *data)
 {
@@ -86,24 +73,20 @@ char	*parse_specifier_d(va_list *arg, t_conv *data)
 	if (data->specifier != 'd')
 		return (NULL);
 	input = va_arg(*arg, int);
+	if (data->precision == -1 && is_flag_set(data->flags, '0'))
+		data->precision = data->field_width;
 	count = count_digits(input, data);
 	if (data->field_width < count)
 		data->field_width = count;
-	if (data->precision == -1 && is_flag_set(data->flags, '0'))
-		data->precision = data->field_width;
 	if ((data->precision == data->field_width) && (input < 0
-		|| is_flag_set(data->flags, ' ') || is_flag_set(data->flags, '+')))
+			|| is_flag_set(data->flags, ' ') || is_flag_set(data->flags, '+')))
 		data->precision--;
 	print = create_width_print(data->field_width, ' ');
 	if (print == NULL)
 		return (NULL);
-	// apply_precision(print, data, input);
-	// rev_copy(print, input, data->field_width);
-	precisioned = create_width_print(count, '0');
-	ft_memmove(precisioned, ft_itoa(input), count);
-	if (is_flag_set(data->flags, '-'))
-		ft_memmove(print, precisioned, count);
-	else
-		ft_memmove(&(print[ft_strlen(print) - count]), precisioned, count);
+	precisioned = fill_precision(input, count, data);
+	if (precisioned == NULL)
+		return (NULL);
+	put_prcsion(print, precisioned, data, count);
 	return (print);
 }
