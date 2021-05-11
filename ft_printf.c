@@ -44,6 +44,7 @@ int	prnt_conv(va_list *arg, t_conv *data)
 		return (-1);
 	i = ft_strlen(print);
 	write(1, print, i);
+	free(print);
 	return (i);
 }
 

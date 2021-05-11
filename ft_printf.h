@@ -22,6 +22,7 @@ int		get_flag_value(char c);
 int		is_flag_set(int flag, char c);
 int		get_specifier_index(char c);
 char	*create_width_print(int width, char fill);
+char	*ft_uitob(unsigned int n, const char *base);
 /* Specifier Parsers */
 char	*parse_specifier_c(va_list *arg, t_conv *data);
 char	*parse_specifier_d(va_list *arg, t_conv *data);

@@ -41,10 +41,11 @@ char	*fill_precision(int input, int count, t_conv *data)
 		return (NULL);
 	len = ft_strlen(itoa);
 	if (input < 0)
+	{
 		len--;
-	ft_memmove(itoa, &(itoa[1]), len * sizeof(char));
+		ft_memmove(itoa, &(itoa[1]), len * sizeof(char));
+	}
 	ft_memcpy(&(precisioned[count - len]), itoa, len * sizeof(char));
-	printf("#TEKST:%s&GETAL:%i;", precisioned, count);
 	free(itoa);
 	if (input < 0)
 		precisioned[0] = '-';
