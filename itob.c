@@ -11,6 +11,7 @@ char	*insert_base(size_t count, unsigned int n, size_t base_size, char *base)
 	converted = malloc(sizeof(char) * (count + 1));
 	if (converted == NULL)
 		return (NULL);
+	converted[count] = '\0';
 	while (i < count)
 	{
 		converted[count - 1 - i] = base[n % base_size];
@@ -20,9 +21,8 @@ char	*insert_base(size_t count, unsigned int n, size_t base_size, char *base)
 	return (converted);
 }
 
-char	*ft_uitob(unsigned int n, const char *base)
+char	*ft_uitob(unsigned int n, char *base)
 {
-	char	*converted;
 	size_t	base_size;
 	size_t	count;
 	size_t	i;
@@ -30,13 +30,12 @@ char	*ft_uitob(unsigned int n, const char *base)
 	base_size = ft_strlen(base);
 	if (base == NULL || base_size < 2)
 		return (NULL);
-	count = 0;
+	count = 1;
 	i = n;
-	while (i > 0)
+	while (i >= base_size)
 	{
 		i /= base_size;
 		count++;
 	}
-	converted = insert_base(count, n, base_size, base);
-	return (converted);
+	return (insert_base(count, n, base_size, base));
 }

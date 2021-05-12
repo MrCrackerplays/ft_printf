@@ -10,6 +10,8 @@ int	count_digits(int number, t_conv *data)
 
 	if (number == -2147483648)
 		return (11);
+	if (number == 0 && data->precision == 0)
+		return (0);
 	i = 1;
 	is_prefixed = 0;
 	if (number < 0 || is_flag_set(data->flags, ' ')
@@ -74,7 +76,8 @@ char	*parse_specifier_d(va_list *arg, t_conv *data)
 	if (data->specifier != 'd')
 		return (NULL);
 	input = va_arg(*arg, int);
-	if (data->precision == -1 && is_flag_set(data->flags, '0'))
+	if (data->precision == -1 && !is_flag_set(data->flags, '-')
+		&& is_flag_set(data->flags, '0'))
 		data->precision = data->field_width;
 	count = count_digits(input, data);
 	if (data->field_width < count)
