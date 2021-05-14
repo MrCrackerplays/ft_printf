@@ -37,3 +37,27 @@ char	*create_width_print(int width, char fill)
 	ret[width] = '\0';
 	return (ret);
 }
+
+int	count_digits(int number, t_conv *data, int base_size)
+{
+	int	i;
+	int	is_prefixed;
+
+	if (number == 0 && data->precision == 0)
+		return (0);
+	i = 1;
+	is_prefixed = 0;
+	if (number < 0 || is_flag_set(data->flags, ' ')
+		|| is_flag_set(data->flags, '+'))
+		is_prefixed = 1;
+	if (number > 0)
+		number = -number;
+	while (number <= -base_size)
+	{
+		number /= base_size;
+		i++;
+	}
+	if (i < data->precision)
+		return (data->precision + is_prefixed);
+	return (i + is_prefixed);
+}

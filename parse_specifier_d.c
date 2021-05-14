@@ -3,32 +3,6 @@
 #include "stdlib.h"
 #include "stdio.h"
 
-int	count_digits(int number, t_conv *data)
-{
-	int	i;
-	int	is_prefixed;
-
-	if (number == -2147483648)
-		return (11);
-	if (number == 0 && data->precision == 0)
-		return (0);
-	i = 1;
-	is_prefixed = 0;
-	if (number < 0 || is_flag_set(data->flags, ' ')
-		|| is_flag_set(data->flags, '+'))
-		is_prefixed = 1;
-	if (number < 0)
-		number = -number;
-	while (number >= 10)
-	{
-		number /= 10;
-		i++;
-	}
-	if (i < data->precision)
-		return (data->precision + is_prefixed);
-	return (i + is_prefixed);
-}
-
 char	*fill_precision(int input, int count, t_conv *data)
 {
 	char	*precisioned;
@@ -79,7 +53,7 @@ char	*parse_specifier_d(va_list *arg, t_conv *data)
 	if (data->precision == -1 && !is_flag_set(data->flags, '-')
 		&& is_flag_set(data->flags, '0'))
 		data->precision = data->field_width;
-	count = count_digits(input, data);
+	count = count_digits(input, data, 10);
 	if (data->field_width < count)
 		data->field_width = count;
 	if ((data->precision == data->field_width) && (input < 0
