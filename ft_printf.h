@@ -23,7 +23,7 @@ int		is_flag_set(int flag, char c);
 int		get_specifier_index(char c);
 char	*create_width_print(int width, char fill);
 char	*ft_uitob(unsigned int n, char *base);
-int		count_digits(int number, t_conv *data, int base_size);
+int		get_count(t_conv *data, int input, int base_size);
 /* Specifier Parsers */
 char	*parse_specifier_c(va_list *arg, t_conv *data);
 char	*parse_specifier_d(va_list *arg, t_conv *data);

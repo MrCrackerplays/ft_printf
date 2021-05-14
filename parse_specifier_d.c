@@ -50,21 +50,17 @@ char	*parse_specifier_d(va_list *arg, t_conv *data)
 	if (data->specifier != 'd')
 		return (NULL);
 	input = va_arg(*arg, int);
-	if (data->precision == -1 && !is_flag_set(data->flags, '-')
-		&& is_flag_set(data->flags, '0'))
-		data->precision = data->field_width;
-	count = count_digits(input, data, 10);
-	if (data->field_width < count)
-		data->field_width = count;
-	if ((data->precision == data->field_width) && (input < 0
-			|| is_flag_set(data->flags, ' ') || is_flag_set(data->flags, '+')))
-		data->precision--;
+	count = get_count(data, input, 10);
 	print = create_width_print(data->field_width, ' ');
 	if (print == NULL)
 		return (NULL);
 	precisioned = fill_precision(input, count, data);
 	if (precisioned == NULL)
+	{
+		free(print);
 		return (NULL);
+	}
 	put_prcsion(print, precisioned, data, count);
+	free(precisioned);
 	return (print);
 }

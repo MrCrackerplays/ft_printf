@@ -61,3 +61,19 @@ int	count_digits(int number, t_conv *data, int base_size)
 		return (data->precision + is_prefixed);
 	return (i + is_prefixed);
 }
+
+int	get_count(t_conv *data, int input, int base_size)
+{
+	int count;
+
+	if (data->precision == -1 && !is_flag_set(data->flags, '-')
+		&& is_flag_set(data->flags, '0'))
+		data->precision = data->field_width;
+	count = count_digits(input, data, base_size);
+	if (data->field_width < count)
+		data->field_width = count;
+	if ((data->precision == data->field_width) && (input < 0
+			|| is_flag_set(data->flags, ' ') || is_flag_set(data->flags, '+')))
+		data->precision--;
+	return (count);
+}

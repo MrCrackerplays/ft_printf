@@ -18,6 +18,7 @@ char	*put_precision(char *print, char *prescioned, t_conv *data)
 char	*parse_specifier_x(va_list *arg, t_conv *data)
 {
 	int		input;
+	int		count;
 	char	*base;
 	char	*print;
 	char	*precisioned;
@@ -28,12 +29,21 @@ char	*parse_specifier_x(va_list *arg, t_conv *data)
 	if (data->specifier == 'X')
 		base = "0123456789ABCDEF";
 	input = va_arg(*arg, int);
+	count = get_count(data, input, 16);
 	print = create_width_print(data->field_width, ' ');
+	if (print == NULL)
+		return (NULL);
 	precisioned = create_precision(data, input);
+	if (precisioned == NULL)
+	{
+		free(print);
+		return (NULL);
+	}
 	put_precision(print, precisioned, data);
-	// print = ft_uitob(input, base);
+	free(precisioned);
 	return (print);
 }
+// print = ft_uitob(input, base);
 
 char	*parse_specifier_X(va_list *arg, t_conv *data)
 {

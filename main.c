@@ -88,16 +88,16 @@ void	test_c(void)
 int	main(void)
 {
 	// int	amount;
-	// int	arr[8] = {1, -3, 2147483647, (int)2147483648, 69, -21, 1337, 0};
+	int	arr[8] = {1, -3, 2147483647, (int)2147483648, 69, -21, 1337, 0};
 	// printf("\x1b[38;5;200m _       _\n");
 	// printf("(_)_ __ | |_ ___  __ _  ___ _ __ ___ \n");
 	// printf("| | '_ \\| __/ _ \\/ _` |/ _ \\ '__/ __|\n");
 	// printf("| | | | | ||  __/ (_| |  __/ |  \\__ \\\n");
 	// printf("|_|_| |_|\\__\\___|\\__, |\\___|_|  |___/\n");
 	// printf("                 |___/               \n\x1b[0m");
-	// test_i(&arr[0], 8);
-	ft_printf("a%.0xc", 0);
-	printf("\nb%8.id", 0);
+	test_i(&arr[0], 8);
+	// ft_printf("a%.0xc", 0);
+	// printf("\nb%8.id", 0);
 
 	// amount = ft_printf("%d", -50);
 	//    printf("\n");
