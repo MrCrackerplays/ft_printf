@@ -8,7 +8,7 @@ int	get_specifier_index(char c)
 	i = 0;
 	while (g_specifiers[i] && g_specifiers[i] != c)
 		i++;
-	if (g_flags[i] == '\0')
+	if (g_specifiers[i] == '\0')
 		return (-1);
 	return (i);
 }

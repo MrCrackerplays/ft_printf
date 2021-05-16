@@ -38,7 +38,7 @@ char	*create_width_print(int width, char fill)
 	return (ret);
 }
 
-int	count_digits(int number, t_conv *data, int base_size)
+int	count_digits(long int number, t_conv *data, int base_size)
 {
 	int	i;
 	int	is_prefixed;
@@ -62,9 +62,9 @@ int	count_digits(int number, t_conv *data, int base_size)
 	return (i + is_prefixed);
 }
 
-int	get_count(t_conv *data, int input, int base_size)
+int	get_count(t_conv *data, long int input, int base_size)
 {
-	int count;
+	int	count;
 
 	if (data->precision == -1 && !is_flag_set(data->flags, '-')
 		&& is_flag_set(data->flags, '0'))

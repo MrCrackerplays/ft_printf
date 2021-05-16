@@ -2,25 +2,6 @@
 #include "libft/libft.h"
 #include "stdlib.h"
 
-char	*apply_parse(char *print, char *input, t_conv *data, int len)
-{
-	int	i;
-	int	left;
-
-	i = 0;
-	left = is_flag_set(data->flags, '-');
-	while (i < data->field_width)
-	{
-		if (left && i < len)
-			print[i] = input[i];
-		else if (!left && i >= data->field_width - len)
-			print[i] = input[i - (data->field_width - len)];
-		i++;
-	}
-	i = 0;
-	return (print);
-}
-
 char	*parse_specifier_s(va_list *arg, t_conv *data)
 {
 	char	*input;
@@ -31,13 +12,13 @@ char	*parse_specifier_s(va_list *arg, t_conv *data)
 		return (NULL);
 	input = va_arg(*arg, char *);
 	length = ft_strlen(input);
-	if (data->precision < length)
+	if (data-> precision != -1 && data->precision < length)
 		length = data->precision;
 	if (length > data->field_width)
 		data->field_width = length;
 	print = create_width_print(data->field_width, ' ');
 	if (print == NULL)
 		return (NULL);
-	print = apply_parse(print, input, data, length);
+	put_prcsion(print, input, data, length);
 	return (print);
 }

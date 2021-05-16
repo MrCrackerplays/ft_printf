@@ -1,9 +1,8 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 #include "stdlib.h"
-#include "stdio.h"
 
-char	*fill_precision(int input, int count, t_conv *data)
+char	*fill_precision(int input, int count, t_conv *data, char *base)
 {
 	char	*precisioned;
 	char	*itoa;
@@ -12,15 +11,15 @@ char	*fill_precision(int input, int count, t_conv *data)
 	precisioned = create_width_print(count, '0');
 	if (precisioned == NULL)
 		return (NULL);
-	itoa = ft_itoa(input);
+	if (input < 0)
+		itoa = ft_uitob(-((unsigned int)input), base);
+	else
+		itoa = ft_uitob((unsigned int)input, base);
+	if (itoa == NULL)
+		free(precisioned);
 	if (itoa == NULL)
 		return (NULL);
 	len = ft_strlen(itoa);
-	if (input < 0)
-	{
-		len--;
-		ft_memmove(itoa, &(itoa[1]), len * sizeof(char));
-	}
 	ft_memcpy(&(precisioned[count - len]), itoa, len * sizeof(char));
 	free(itoa);
 	if (input < 0)
@@ -30,14 +29,6 @@ char	*fill_precision(int input, int count, t_conv *data)
 	else if (is_flag_set(data->flags, ' '))
 		precisioned[0] = ' ';
 	return (precisioned);
-}
-
-void	put_prcsion(char *print, const char *prcsion, t_conv *data, int count)
-{
-	if (is_flag_set(data->flags, '-'))
-		ft_memmove(print, prcsion, count);
-	else
-		ft_memmove(&(print[ft_strlen(print) - count]), prcsion, count);
 }
 
 char	*parse_specifier_d(va_list *arg, t_conv *data)
@@ -54,7 +45,7 @@ char	*parse_specifier_d(va_list *arg, t_conv *data)
 	print = create_width_print(data->field_width, ' ');
 	if (print == NULL)
 		return (NULL);
-	precisioned = fill_precision(input, count, data);
+	precisioned = fill_precision(input, count, data, "0123456789");
 	if (precisioned == NULL)
 	{
 		free(print);
