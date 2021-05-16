@@ -35,7 +35,7 @@ char	*fill_u_precision(unsigned int input, int count, char *base)
 	precisioned = create_width_print(count, '0');
 	if (precisioned == NULL)
 		return (NULL);
-	itoa = ft_uitob(input, base);
+	itoa = ft_ulitob(input, base);
 	if (itoa == NULL)
 	{
 		free(precisioned);

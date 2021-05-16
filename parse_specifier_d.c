@@ -12,9 +12,9 @@ char	*fill_precision(int input, int count, t_conv *data, char *base)
 	if (precisioned == NULL)
 		return (NULL);
 	if (input < 0)
-		itoa = ft_uitob(-((unsigned int)input), base);
+		itoa = ft_ulitob(-((unsigned int)input), base);
 	else
-		itoa = ft_uitob((unsigned int)input, base);
+		itoa = ft_ulitob((unsigned int)input, base);
 	if (itoa == NULL)
 		free(precisioned);
 	if (itoa == NULL)

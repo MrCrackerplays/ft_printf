@@ -23,7 +23,7 @@ int		is_flag_set(int flag, char c);
 int		get_specifier_index(char c);
 /* Utility Functions */
 char	*create_width_print(int width, char fill);
-char	*ft_uitob(unsigned int n, char *base);
+char	*ft_ulitob(unsigned long int n, char *base);
 int		get_count(t_conv *data, long int input, int base_size);
 void	put_prcsion(char *print, const char *prcsion, t_conv *data, int count);
 char	*fill_u_precision(unsigned int input, int count, char *base);

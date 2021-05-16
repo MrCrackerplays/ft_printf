@@ -2,7 +2,7 @@
 #include "libft/libft.h"
 #include "stdlib.h"
 
-char	*insert_base(size_t count, unsigned int n, size_t base_size, char *base)
+char	*insert_base(size_t count, unsigned long int n, size_t base_size, char *base)
 {
 	size_t	i;
 	char	*converted;
@@ -21,7 +21,7 @@ char	*insert_base(size_t count, unsigned int n, size_t base_size, char *base)
 	return (converted);
 }
 
-char	*ft_uitob(unsigned int n, char *base)
+char	*ft_ulitob(unsigned long int n, char *base)
 {
 	size_t	base_size;
 	size_t	count;

@@ -11,6 +11,12 @@ char	*parse_specifier_s(va_list *arg, t_conv *data)
 	if (data->specifier != 's')
 		return (NULL);
 	input = va_arg(*arg, char *);
+	if (input == NULL)
+	{
+		print = create_width_print(6, ' ');
+		put_prcsion(print, "(null)", data, 6);
+		return (print);
+	}
 	length = ft_strlen(input);
 	if (data-> precision != -1 && data->precision < length)
 		length = data->precision;
