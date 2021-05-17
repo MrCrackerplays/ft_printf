@@ -42,10 +42,9 @@ int	prnt_conv(va_list *arg, t_conv *data)
 	print = parse[i](arg, data);
 	if (print == NULL)
 		return (-1);
-	i = ft_strlen(print);
-	write(1, print, i);
+	write(1, print, data->field_width);
 	free(print);
-	return (i);
+	return (data->field_width);
 }
 
 int	step_through(const char *str, t_conv *data, va_list *args)
@@ -81,7 +80,7 @@ int	ft_printf(const char *str, ...)
 	va_list	args;
 	int		len;
 
-	data = ft_calloc(1, sizeof(data));
+	data = ft_calloc(1, sizeof(*data));
 	if (data == NULL)
 		return (-1);
 	va_start(args, str);

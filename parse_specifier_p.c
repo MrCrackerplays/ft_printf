@@ -1,7 +1,6 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 #include "stdlib.h"
-#include "stdio.h"
 
 char	*fill_ull_precision(unsigned long long int input, int count, char *base)
 {
