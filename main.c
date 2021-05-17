@@ -16,7 +16,7 @@ void	test_i(int *arr, int size)
 	printf("                 |___/               \x1b[0m\n");
 	i = 0;
 	printf("== BASIC ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%d| == ", arr[i]);
 		b =    printf("|%d|\n", arr[i]);
@@ -26,7 +26,7 @@ void	test_i(int *arr, int size)
 	}
 	i = 0;
 	printf("== PRECISION ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%.5i| == ", arr[i]);
 		b =    printf("|%.5i|\n", arr[i]);
@@ -36,7 +36,7 @@ void	test_i(int *arr, int size)
 	}
 	i = 0;
 	printf("== FIELD WIDTH ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%5i| == ", arr[i]);
 		b =    printf("|%5i|\n", arr[i]);
@@ -46,7 +46,7 @@ void	test_i(int *arr, int size)
 	}
 	i = 0;
 	printf("== P > W ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%4.7i| == ", arr[i]);
 		b =    printf("|%4.7i|\n", arr[i]);
@@ -56,7 +56,7 @@ void	test_i(int *arr, int size)
 	}
 	i = 0;
 	printf("== P < W ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%7.4i| == ", arr[i]);
 		b =    printf("|%7.4i|\n", arr[i]);
@@ -66,7 +66,7 @@ void	test_i(int *arr, int size)
 	}
 	i = 0;
 	printf("== P = W ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%4.4i| == ", arr[i]);
 		b =    printf("|%4.4i|\n", arr[i]);
@@ -76,7 +76,7 @@ void	test_i(int *arr, int size)
 	}
 	i = 0;
 	printf("== 0P ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%.0i| == ", arr[i]);
 		b =    printf("|%.0i|\n", arr[i]);
@@ -86,7 +86,7 @@ void	test_i(int *arr, int size)
 	}
 	i = 0;
 	printf("== LEFT ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%*i| == ", -4, arr[i]);
 		b =    printf("|%*i|\n", -4, arr[i]);
@@ -96,7 +96,7 @@ void	test_i(int *arr, int size)
 	}
 	i = 0;
 	printf("== ZERO ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%04.7i| == ", arr[i]);
 		b =    printf("|%04.7i|\n", arr[i]);
@@ -197,7 +197,7 @@ void	test_x(int *arr, int size)
 	printf("|_| |_|\\___/_/\\_\\\x1b[0m\n");
 	i = 0;
 	printf("== BASIC ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%x| == ", arr[i]);
 		b =    printf("|%x|\n", arr[i]);
@@ -207,7 +207,7 @@ void	test_x(int *arr, int size)
 	}
 	i = 0;
 	printf("== PRECISION ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%.5X| == ", arr[i]);
 		b =    printf("|%.5X|\n", arr[i]);
@@ -217,7 +217,7 @@ void	test_x(int *arr, int size)
 	}
 	i = 0;
 	printf("== FIELD WIDTH ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%5x| == ", arr[i]);
 		b =    printf("|%5x|\n", arr[i]);
@@ -227,7 +227,7 @@ void	test_x(int *arr, int size)
 	}
 	i = 0;
 	printf("== P > W ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%4.7X| == ", arr[i]);
 		b =    printf("|%4.7X|\n", arr[i]);
@@ -237,7 +237,7 @@ void	test_x(int *arr, int size)
 	}
 	i = 0;
 	printf("== P < W ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%7.4x| == ", arr[i]);
 		b =    printf("|%7.4x|\n", arr[i]);
@@ -247,7 +247,7 @@ void	test_x(int *arr, int size)
 	}
 	i = 0;
 	printf("== P = W ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%4.4X| == ", arr[i]);
 		b =    printf("|%4.4X|\n", arr[i]);
@@ -257,7 +257,7 @@ void	test_x(int *arr, int size)
 	}
 	i = 0;
 	printf("== 0P ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%.0x| == ", arr[i]);
 		b =    printf("|%.0x|\n", arr[i]);
@@ -267,7 +267,7 @@ void	test_x(int *arr, int size)
 	}
 	i = 0;
 	printf("== LEFT ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%-X| == ", arr[i]);
 		b =    printf("|%-X|\n", arr[i]);
@@ -277,7 +277,7 @@ void	test_x(int *arr, int size)
 	}
 	i = 0;
 	printf("== ZERO ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%04.7x| == ", arr[i]);
 		b =    printf("|%04.7x|\n", arr[i]);
@@ -300,7 +300,7 @@ void	test_u(int *arr, int size)
 	printf("                   |___/                  \x1b[0m\n");
 	i = 0;
 	printf("== BASIC ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%u| == ", arr[i]);
 		b =    printf("|%u|\n", arr[i]);
@@ -310,7 +310,7 @@ void	test_u(int *arr, int size)
 	}
 	i = 0;
 	printf("== PRECISION ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%.5u| == ", arr[i]);
 		b =    printf("|%.5u|\n", arr[i]);
@@ -320,7 +320,7 @@ void	test_u(int *arr, int size)
 	}
 	i = 0;
 	printf("== FIELD WIDTH ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%5u| == ", arr[i]);
 		b =    printf("|%5u|\n", arr[i]);
@@ -330,7 +330,7 @@ void	test_u(int *arr, int size)
 	}
 	i = 0;
 	printf("== P > W ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%4.7u| == ", arr[i]);
 		b =    printf("|%4.7u|\n", arr[i]);
@@ -340,7 +340,7 @@ void	test_u(int *arr, int size)
 	}
 	i = 0;
 	printf("== P < W ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%7.4u| == ", arr[i]);
 		b =    printf("|%7.4u|\n", arr[i]);
@@ -350,7 +350,7 @@ void	test_u(int *arr, int size)
 	}
 	i = 0;
 	printf("== P = W ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%4.4u| == ", arr[i]);
 		b =    printf("|%4.4u|\n", arr[i]);
@@ -360,7 +360,7 @@ void	test_u(int *arr, int size)
 	}
 	i = 0;
 	printf("== 0P ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%.0u| == ", arr[i]);
 		b =    printf("|%.0u|\n", arr[i]);
@@ -370,7 +370,7 @@ void	test_u(int *arr, int size)
 	}
 	i = 0;
 	printf("== LEFT ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%*u| == ", -4, arr[i]);
 		b =    printf("|%*u|\n", -4, arr[i]);
@@ -380,7 +380,7 @@ void	test_u(int *arr, int size)
 	}
 	i = 0;
 	printf("== ZERO ==\n");
-	while (i <= size)
+	while (i < size)
 	{
 		a = ft_printf("|%04.7u| == ", arr[i]);
 		b =    printf("|%04.7u|\n", arr[i]);
@@ -390,22 +390,66 @@ void	test_u(int *arr, int size)
 	}
 }
 
+void	test_p(int *arr, int size)
+{
+	int	i;
+	int	a;
+	int	b;
+
+	printf("\x1b[38;5;200m _ __   ___ (_)_ __ | |_ ___ _ __ ___ \n");
+	printf("| '_ \\ / _ \\| | '_ \\| __/ _ \\ '__/ __|\n");
+	printf("| |_) | (_) | | | | | ||  __/ |  \\__ \\\n");
+	printf("| .__/ \\___/|_|_| |_|\\__\\___|_|  |___/\n");
+	printf("|_|\x1b[0m\n");
+	i = 0;
+	printf("== BASIC ==\n");
+	while (i < size)
+	{
+		a = ft_printf("|%p| == ", (void*)(long)arr[i]);
+		b =    printf("|%p|\n", (void*)(long)arr[i]);
+		if (a - 3 != b)
+			printf("%i != %i", a, b);
+		i++;
+	}
+	i = 0;
+	printf("== FIELD WIDTH ==\n");
+	while (i < size)
+	{
+		a = ft_printf("|%5p| == ", (void*)(long)arr[i]);
+		b =    printf("|%5p|\n", (void*)(long)arr[i]);
+		if (a - 3 != b)
+			printf("%i != %i", a, b);
+		i++;
+	}
+	i = 0;
+	printf("== LEFT ==\n");
+	while (i < size)
+	{
+		a = ft_printf("|%*p| == ", -4, (void*)(long)arr[i]);
+		b =    printf("|%*p|\n", -4, (void*)(long)arr[i]);
+		if (a - 3 != b)
+			printf("%i != %i", a, b);
+		i++;
+	}
+}
+
 int	main(void)
 {
 	// int	amount;
-	// int	arr[9] = {1, -3, 2147483647, -2147483648, 69, -21, 1337, -1, 0};
-	// test_i(&arr[0], 8);
-	// test_s();
-	// test_x(&arr[0], 8);
-	// test_u(&arr[0], 8);
+	int	arr[9] = {1, -3, 2147483647, -2147483648, 69, -21, 1337, -1, 0};
+	test_i(&arr[0], 8);
+	test_s();
+	test_x(&arr[0], 8);
+	test_u(&arr[0], 8);
+	test_p(&arr[0], 9);
 	// ft_printf("|%p|\n", (void*)0);
 	// printf("|%p|\n", (void*)0);
 	// ft_printf("|%p|\n", NULL);
 	// printf("|%p|\n", NULL);
 	// ft_printf("|%p|\n", (void*)1);
 	// printf("|%p|\n", (void*)1);
-	ft_printf("|%p|\n", (void*)-15);
-	printf("|%p|\n", (void*)-15);
+	// ft_printf("|%p|\n", (void*)-15);
+	// printf("|%p|\n", (void*)-15);
 	// ft_printf("|%#x|\n", -15);
 	// printf("|%#x|\n", -15);
 	// ft_printf("|%p|\n", (void*)16);

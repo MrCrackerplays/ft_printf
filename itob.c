@@ -2,7 +2,7 @@
 #include "libft/libft.h"
 #include "stdlib.h"
 
-char	*insert_base(size_t count, unsigned long int n, size_t base_size, char *base)
+char	*insert_base(size_t count, unsigned long int n, size_t size, char *base)
 {
 	size_t	i;
 	char	*converted;
@@ -14,8 +14,8 @@ char	*insert_base(size_t count, unsigned long int n, size_t base_size, char *bas
 	converted[count] = '\0';
 	while (i < count)
 	{
-		converted[count - 1 - i] = base[n % base_size];
-		n /= base_size;
+		converted[count - 1 - i] = base[n % size];
+		n /= size;
 		i++;
 	}
 	return (converted);
