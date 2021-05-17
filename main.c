@@ -8,8 +8,7 @@ void	test_i(int *arr, int size)
 	int	a;
 	int	b;
 
-	printf("\x1b[38;5;200m _       _\n");
-	printf("(_)_ __ | |_ ___  __ _  ___ _ __ ___ \n");
+	printf("\x1b[38;5;200m(_)_ __ | |_ ___  __ _  ___ _ __ ___ \n");
 	printf("| | '_ \\| __/ _ \\/ _` |/ _ \\ '__/ __|\n");
 	printf("| | | | | ||  __/ (_| |  __/ |  \\__ \\\n");
 	printf("|_|_| |_|\\__\\___|\\__, |\\___|_|  |___/\n");
@@ -439,13 +438,16 @@ void	test_c(int *arr, int size)
 	int	a;
 	int	b;
 
-	printf("\x1b[38;5;200m\x1b[0m\n");
+	printf("\x1b[38;5;200m  ___| |__   __ _ _ __ \n");
+	printf(" / __| '_ \\ / _` | '__|\n");
+	printf("| (__| | | | (_| | |   \n");
+	printf(" \\___|_| |_|\\__,_|_|\x1b[0m\n");
 	i = 0;
 	printf("== BASIC ==\n");
 	while (i < size)
 	{
-		a = ft_printf("|%c| == ", (char)arr[i]);
-		b =    printf("|%c|\n", (char)arr[i]);
+		a = ft_printf("|%c| == ", arr[i]);
+		b =    printf("|%c|\n", arr[i]);
 		if (a - 3 != b)
 			ft_printf("%i != %i", a - 3, b);
 		i++;
@@ -472,35 +474,28 @@ void	test_c(int *arr, int size)
 	}
 }
 
+void	test_percent(void)
+{
+	int	a;
+	int	b;
+	printf("\x1b[38;5;200m(_)/ /\n");
+	printf("  / / \n");
+	printf(" / /_ \n");
+	printf("/_/(_)\x1b[0m\n");
+	a = ft_printf("|%%| == ");
+	b =    printf("|%%|\n");
+	if (a - 3 != b)
+		printf("%i != %i", a - 3, b);
+}
+
 int	main(void)
 {
-	// int	amount;
 	int	arr[9] = {1, -3, 2147483647, -2147483648, 69, -21, 1337, -1, 0};
-	test_i(&arr[0], 9);
-	test_s();
-	test_x(&arr[0], 9);
-	test_u(&arr[0], 9);
-	test_p(&arr[0], 9);
 	test_c(&arr[0], 9);
-	// ft_printf("%c", 'k');
-	// ft_printf("|%p|\n", (void*)0);
-	// printf("|%p|\n", (void*)0);
-	// ft_printf("|%p|\n", NULL);
-	// printf("|%p|\n", NULL);
-	// ft_printf("|%p|\n", (void*)1);
-	// printf("|%p|\n", (void*)1);
-	// ft_printf("|%p|\n", (void*)-15);
-	// printf("|%p|\n", (void*)-15);
-	// ft_printf("|%#x|\n", -15);
-	// printf("|%#x|\n", -15);
-	// ft_printf("|%p|\n", (void*)16);
-	// printf("|%p|\n", (void*)16);
-
-	// amount = ft_printf("%d", -50);
-	//    printf("\n");
-	//    printf(".%%syes %03.5dc a %-8.3d b %8d c %08d d %d", -130, -12, -11, 10, 10);
-	//    printf("\n");
-	// ft_printf(".%%syes %03.5dc a %-8.3d b %8d c %08d d %d", -130, -12, -11, 10, 10);
-	// printf("\n%d\n", amount);
-	// printf("%#05X", 11);
+	test_s();
+	test_p(&arr[0], 9);
+	test_i(&arr[0], 9);
+	test_u(&arr[0], 9);
+	test_x(&arr[0], 9);
+	test_percent();
 }
