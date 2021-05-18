@@ -488,16 +488,119 @@ void	test_percent(void)
 		printf("%i != %i", a - 3, b);
 }
 
+void	test_o(int *arr, int size)
+{
+	int	i;
+	int	a;
+	int	b;
+
+	printf("\x1b[38;5;200m  ___   ___| |_ __ _| |\n");
+	printf(" / _ \\ / __| __/ _` | |\n");
+	printf("| (_) | (__| || (_| | |\n");
+	printf(" \\___/ \\___|\\__\\__,_|_|\x1b[0m\n");
+	i = 0;
+	printf("== BASIC ==\n");
+	while (i < size)
+	{
+		a = ft_printf("|%o| == ", arr[i]);
+		b =    printf("|%o|\n", arr[i]);
+		if (a - 3 != b)
+			printf("%i != %i", a - 3, b);
+		i++;
+	}
+	i = 0;
+	printf("== PRECISION ==\n");
+	while (i < size)
+	{
+		a = ft_printf("|%.5o| == ", arr[i]);
+		b =    printf("|%.5o|\n", arr[i]);
+		if (a - 3 != b)
+			printf("%i != %i", a - 3, b);
+		i++;
+	}
+	i = 0;
+	printf("== FIELD WIDTH ==\n");
+	while (i < size)
+	{
+		a = ft_printf("|%5o| == ", arr[i]);
+		b =    printf("|%5o|\n", arr[i]);
+		if (a - 3 != b)
+			printf("%i != %i", a - 3, b);
+		i++;
+	}
+	i = 0;
+	printf("== P > W ==\n");
+	while (i < size)
+	{
+		a = ft_printf("|%4.7o| == ", arr[i]);
+		b =    printf("|%4.7o|\n", arr[i]);
+		if (a - 3 != b)
+			printf("%i != %i", a - 3, b);
+		i++;
+	}
+	i = 0;
+	printf("== P < W ==\n");
+	while (i < size)
+	{
+		a = ft_printf("|%7.4o| == ", arr[i]);
+		b =    printf("|%7.4o|\n", arr[i]);
+		if (a - 3 != b)
+			printf("%i != %i", a - 3, b);
+		i++;
+	}
+	i = 0;
+	printf("== P = W ==\n");
+	while (i < size)
+	{
+		a = ft_printf("|%4.4o| == ", arr[i]);
+		b =    printf("|%4.4o|\n", arr[i]);
+		if (a - 3 != b)
+			printf("%i != %i", a - 3, b);
+		i++;
+	}
+	i = 0;
+	printf("== 0P ==\n");
+	while (i < size)
+	{
+		a = ft_printf("|%.0o| == ", arr[i]);
+		b =    printf("|%.0o|\n", arr[i]);
+		if (a - 3 != b)
+			printf("%i != %i", a - 3, b);
+		i++;
+	}
+	i = 0;
+	printf("== LEFT ==\n");
+	while (i < size)
+	{
+		a = ft_printf("|%-o| == ", arr[i]);
+		b =    printf("|%-o|\n", arr[i]);
+		if (a - 3 != b)
+			printf("%i != %i", a - 3, b);
+		i++;
+	}
+	i = 0;
+	printf("== ZERO ==\n");
+	while (i < size)
+	{
+		a = ft_printf("|%04.7o| == ", arr[i]);
+		b =    printf("|%04.7o|\n", arr[i]);
+		if (a - 3 != b)
+			printf("%i != %i", a - 3, b);
+		i++;
+	}
+}
+
 int	main(void)
 {
-	// int	arr[9] = {1, -3, 2147483647, -2147483648, 69, -21, 1337, -1, 0};
+	int	arr[9] = {1, -3, 2147483647, -2147483648, 69, -21, 1337, -1, 0};
 	// test_c(&arr[0], 9);
-	test_s();
+	// test_s();
 	// test_p(&arr[0], 9);
 	// test_i(&arr[0], 9);
 	// test_u(&arr[0], 9);
 	// test_x(&arr[0], 9);
 	// test_percent();
+	test_o(&arr[0], 9);
 	// int a;
 	// int b;
 	// a = ft_printf("%9s\n", NULL);

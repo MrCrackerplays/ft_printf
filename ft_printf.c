@@ -32,7 +32,7 @@ int	prnt_conv(va_list *arg, t_conv *data)
 	static	char*(*parse[])(va_list *, t_conv *) = {parse_specifier_d,
 			parse_specifier_i, parse_specifier_u, parse_specifier_x,
 			parse_specifier_X, parse_specifier_c, parse_specifier_s,
-			parse_specifier_p, parse_specifier_percent};
+			parse_specifier_p, parse_specifier_percent, parse_specifier_o};
 	char		*print;
 	int			i;
 

@@ -37,7 +37,8 @@ char	*parse_specifier_u(va_list *arg, t_conv *data);
 char	*parse_specifier_x(va_list *arg, t_conv *data);
 char	*parse_specifier_X(va_list *arg, t_conv *data);
 char	*parse_specifier_percent(va_list *arg, t_conv *data);
+char	*parse_specifier_o(va_list *arg, t_conv *data);
 /* Global Variables */
 const static char	*g_flags = "-0";
-const static char	*g_specifiers = "diuxXcsp%";
+const static char	*g_specifiers = "diuxXcsp%o";
 #endif
