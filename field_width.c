@@ -68,7 +68,7 @@ int	get_count(t_conv *data, long int input, int base_size)
 		|| is_flag_set(data->flags, '+'))
 		prefix = 1;
 	if ((data->specifier == 'x' || data->specifier == 'X')
-		&& (is_flag_set(data->flags, '#')) )
+		&& (is_flag_set(data->flags, '#')))
 		prefix = 2;
 	if (input == 0 && data->precision == 0)
 		count = is_flag_set(data->flags, '+') || is_flag_set(data->flags, ' ');

@@ -23,10 +23,9 @@ char	*parse_specifier_x(va_list *arg, t_conv *data)
 		return (NULL);
 	precisioned = fill_u_precision(input, count, base);
 	if (precisioned == NULL)
-	{
 		free(print);
+	if (precisioned == NULL)
 		return (NULL);
-	}
 	put_prcn(print, precisioned, data, count);
 	free(precisioned);
 	return (print);
