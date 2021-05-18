@@ -32,7 +32,8 @@ int	prnt_conv(va_list *arg, t_conv *data)
 	static	char*(*parse[])(va_list *, t_conv *) = {parse_specifier_d,
 			parse_specifier_i, parse_specifier_u, parse_specifier_x,
 			parse_specifier_X, parse_specifier_c, parse_specifier_s,
-			parse_specifier_p, parse_specifier_percent, parse_specifier_o};
+			parse_specifier_p, parse_specifier_percent, parse_specifier_o,
+			parse_specifier_n};
 	char		*print;
 	int			i;
 
@@ -51,27 +52,26 @@ int	step_through(const char *str, t_conv *data, va_list *args)
 {
 	int	position;
 	int	start;
-	int	len;
-	int	read;
+	int	amount;
 
 	position = 0;
-	len = 0;
+	data->read = 0;
 	while (str[position] != '\0')
 	{
 		start = position;
 		while (str[position] != '%' && str[position] != '\0')
 			position++;
-		len += print_raw(str, position, start);
+		data->read += print_raw(str, position, start);
 		if (str[position] == '\0')
 			break ;
 		position++;
 		prep_conv(args, data, str, &position);
-		read = prnt_conv(args, data);
-		if (read == -1)
+		amount = prnt_conv(args, data);
+		if (amount == -1)
 			return (-1);
-		len += read;
+		data->read += amount;
 	}
-	return (len);
+	return (data->read);
 }
 
 int	ft_printf(const char *str, ...)

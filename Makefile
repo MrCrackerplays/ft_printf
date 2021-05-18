@@ -1,18 +1,11 @@
 NAME = libftprintf.a
-PART_BASE = ft_printf.o flags.o field_width.o precision.o specifier.o \
+OBJ_FILES = ft_printf.o flags.o field_width.o precision.o specifier.o \
 	parse_specifier_s.o parse_specifier_c.o parse_specifier_d.o \
 	parse_specifier_i.o parse_specifier_percent.o parse_specifier_x.o \
 	parse_specifier_u.o parse_specifier_p.o itob.o parse_specifier_o.o \
-	length_modifier.o
-PART_BONUS = 
+	length_modifier.o parse_specifier_n.o
 HEADER_FILES = ft_printf.h
 CFLAGS = -Wall -Werror -Wextra
-
-ifdef WITH_BONUS
-OBJ_FILES = $(PART_BASE) $(PART_BONUS)
-else
-OBJ_FILES = $(PART_BASE)
-endif
 
 all: $(NAME)
 
@@ -26,7 +19,7 @@ $(NAME): $(OBJ_FILES)
 
 clean:
 	$(MAKE) clean -C ./libft
-	rm -f $(PART_BASE) $(PART_BONUS)
+	rm -f $(OBJ_FILES)
 
 fclean: clean
 	$(MAKE) fclean -C ./libft
@@ -34,13 +27,12 @@ fclean: clean
 
 re: fclean all
 
-bonus:
-	$(MAKE) WITH_BONUS=1 all
+bonus: all
 
 run:
 	$(MAKE) && $(CC) $(CFLAGS) main.c libftprintf.a -o a.out && ./a.out
 
 so: $(OBJ_FILES)
-	$(LINK.c) $(CFLAGS) -o $(NAME).so -shared $(OBJ_FILES) $(PART_BONUS)
+	$(LINK.c) $(CFLAGS) -o $(NAME).so -shared $(OBJ_FILES)
 
 .PHONY: all clean fclean re bonus run so

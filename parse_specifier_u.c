@@ -9,7 +9,7 @@ char	*parse_specifier_u(va_list *arg, t_conv *data)
 	char			*print;
 	char			*precisioned;
 
-	data->flags &= ~((1 << get_flag_value(' ')) + (1 << get_flag_value('+')));
+	data->flags &= ~((1 << get_flag_value(' ')) | (1 << get_flag_value('+')));
 	input = va_arg(*arg, unsigned int);
 	count = get_count(data, input, 10);
 	print = create_width_print(data->field_width, ' ');

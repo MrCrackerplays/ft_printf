@@ -19,6 +19,7 @@ typedef struct s_conv
 	int				precision;
 	t_length_mod	length_mod;
 	char			specifier;
+	int				read;
 }	t_conv;
 /* Function Definitions */
 int				ft_printf(const char *s, ...);
@@ -47,8 +48,9 @@ char			*parse_specifier_x(va_list *arg, t_conv *data);
 char			*parse_specifier_X(va_list *arg, t_conv *data);
 char			*parse_specifier_percent(va_list *arg, t_conv *data);
 char			*parse_specifier_o(va_list *arg, t_conv *data);
+char			*parse_specifier_n(va_list *arg, t_conv *data);
 /* Global Variables */
 const static char	*g_flags = "-0 +#";
-const static char	*g_specifiers = "diuxXcsp%o";
+const static char	*g_specifiers = "diuxXcsp%on";
 const static char	*g_length_mods = "hlhhll";
 #endif

@@ -10,7 +10,7 @@ char	*parse_specifier_x(va_list *arg, t_conv *data)
 	char			*print;
 	char			*precisioned;
 
-	data->flags &= ~((1 << get_flag_value(' ')) + (1 << get_flag_value('+')));
+	data->flags &= ~((1 << get_flag_value(' ')) | (1 << get_flag_value('+')));
 	base = "0123456789abcdef";
 	if (data->specifier == 'X')
 		base = "0123456789ABCDEF";
