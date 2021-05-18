@@ -47,8 +47,11 @@ char	*fill_u_precision(unsigned int input, int count, char *base)
 	return (precisioned);
 }
 
-void	put_prcsion(char *print, const char *prcsion, t_conv *data, int count)
+void	put_prcn(char *print, char *prcsion, t_conv *data, int count)
 {
+	if ((data->specifier == 'x' || data->specifier == 'X')
+		&& is_flag_set(data->flags, '#'))
+		prcsion[1] = data->specifier;
 	if (is_flag_set(data->flags, '-'))
 		ft_memmove(print, prcsion, count * sizeof(char));
 	else

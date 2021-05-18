@@ -38,8 +38,6 @@ char	*parse_specifier_d(va_list *arg, t_conv *data)
 	char	*print;
 	char	*precisioned;
 
-	if (data->specifier != 'd')
-		return (NULL);
 	input = va_arg(*arg, int);
 	count = get_count(data, input, 10);
 	print = create_width_print(data->field_width, ' ');
@@ -51,7 +49,7 @@ char	*parse_specifier_d(va_list *arg, t_conv *data)
 		free(print);
 		return (NULL);
 	}
-	put_prcsion(print, precisioned, data, count);
+	put_prcn(print, precisioned, data, count);
 	free(precisioned);
 	return (print);
 }

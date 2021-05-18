@@ -596,11 +596,11 @@ int	main(void)
 	// test_c(&arr[0], 9);
 	// test_s();
 	// test_p(&arr[0], 9);
-	// test_i(&arr[0], 9);
+	test_i(&arr[0], 9);
 	// test_u(&arr[0], 9);
 	// test_x(&arr[0], 9);
 	// test_percent();
-	test_o(&arr[0], 9);
+	// test_o(&arr[0], 9);
 	// int a;
 	// int b;
 	// a = ft_printf("%9s\n", NULL);

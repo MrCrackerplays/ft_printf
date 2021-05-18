@@ -6,8 +6,6 @@ char	*parse_specifier_c(va_list *arg, t_conv *data)
 	unsigned char	input;
 	char			*print;
 
-	if (data->specifier != 'c')
-		return (NULL);
 	input = (unsigned char) va_arg(*arg, int);
 	if (data->field_width < 1)
 		data->field_width = 1;

@@ -9,8 +9,7 @@ char	*parse_specifier_u(va_list *arg, t_conv *data)
 	char			*print;
 	char			*precisioned;
 
-	if (data->specifier != 'u')
-		return (NULL);
+	data->flags &= ~((1 << get_flag_value(' ')) + (1 << get_flag_value('+')));
 	input = va_arg(*arg, unsigned int);
 	count = get_count(data, input, 10);
 	print = create_width_print(data->field_width, ' ');
@@ -22,7 +21,7 @@ char	*parse_specifier_u(va_list *arg, t_conv *data)
 		free(print);
 		return (NULL);
 	}
-	put_prcsion(print, precisioned, data, count);
+	put_prcn(print, precisioned, data, count);
 	free(precisioned);
 	return (print);
 }

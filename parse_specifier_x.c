@@ -10,12 +10,13 @@ char	*parse_specifier_x(va_list *arg, t_conv *data)
 	char			*print;
 	char			*precisioned;
 
-	if (data->specifier != 'X' && data->specifier != 'x')
-		return (NULL);
+	data->flags &= ~((1 << get_flag_value(' ')) + (1 << get_flag_value('+')));
 	base = "0123456789abcdef";
 	if (data->specifier == 'X')
 		base = "0123456789ABCDEF";
 	input = va_arg(*arg, unsigned int);
+	if (input == 0)
+		data->flags &= ~(1 << get_flag_value('#'));
 	count = get_count(data, input, 16);
 	print = create_width_print(data->field_width, ' ');
 	if (print == NULL)
@@ -26,7 +27,7 @@ char	*parse_specifier_x(va_list *arg, t_conv *data)
 		free(print);
 		return (NULL);
 	}
-	put_prcsion(print, precisioned, data, count);
+	put_prcn(print, precisioned, data, count);
 	free(precisioned);
 	return (print);
 }
