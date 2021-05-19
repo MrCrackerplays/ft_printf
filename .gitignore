@@ -1,7 +1,0 @@
-# .gitignore
-# main*
-*.out
-*.o
-*.a
-.vscode
-printfTester
