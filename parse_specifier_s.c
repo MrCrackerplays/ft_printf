@@ -1,6 +1,5 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
-#include "stdlib.h"
 
 char	*parse_specifier_s(va_list *arg, t_conv *data)
 {
