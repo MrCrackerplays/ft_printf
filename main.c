@@ -592,19 +592,19 @@ void	test_o(int *arr, int size)
 
 int	main(void)
 {
-	int	arr[9] = {1, -3, 2147483647, -2147483648, 69, -21, 1337, -1, 0};
+	// int	arr[9] = {1, -3, 2147483647, -2147483648, 69, -21, 1337, -1, 0};
 	// test_c(&arr[0], 9);
 	// test_s();
 	// test_p(&arr[0], 9);
-	test_i(&arr[0], 9);
+	// test_i(&arr[0], 9);
 	// test_u(&arr[0], 9);
 	// test_x(&arr[0], 9);
 	// test_percent();
 	// test_o(&arr[0], 9);
-	// int a;
-	// int b;
-	// a = ft_printf("%9s\n", NULL);
-	//    b = printf("%9s\n", NULL);
-	// if (a != b)
-	// 	printf("%i != %i", a, b);
+	int a;
+	int b;
+	a = ft_printf("|%hu\n", (unsigned short)2147483647);
+	   b = printf("^%hu\n", (unsigned short)2147483647);
+	if (a != b)
+		printf("%i != %i", a, b);
 }

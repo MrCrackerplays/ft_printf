@@ -38,16 +38,15 @@ char	*create_width_print(int width, char fill)
 	return (ret);
 }
 
-int	count_digits(long int number, t_conv *data, int base_size, int prefix)
+int	count_u_digits(unsigned long long number, t_conv *data, int base_size,
+	int prefix)
 {
 	int	i;
 
 	i = 1;
-	if (number > 0)
-		number = -number;
-	while (number <= -base_size)
+	while (number >= (unsigned long long)base_size)
 	{
-		number /= base_size;
+		number /= (unsigned long long)base_size;
 		i++;
 	}
 	if (data->precision == -1 && !is_flag_set(data->flags, '-')
@@ -58,14 +57,13 @@ int	count_digits(long int number, t_conv *data, int base_size, int prefix)
 	return (i + prefix);
 }
 
-int	get_count(t_conv *data, long int input, int base_size)
+int	get_ct(t_conv *data, unsigned long long input, int base_size)
 {
 	int	count;
 	int	prefix;
 
 	prefix = 0;
-	if (input < 0 || is_flag_set(data->flags, ' ')
-		|| is_flag_set(data->flags, '+'))
+	if (is_flag_set(data->flags, ' ') || is_flag_set(data->flags, '+'))
 		prefix = 1;
 	if ((data->specifier == 'x' || data->specifier == 'X')
 		&& (is_flag_set(data->flags, '#')))
@@ -73,11 +71,11 @@ int	get_count(t_conv *data, long int input, int base_size)
 	if (input == 0 && data->precision == 0)
 		count = is_flag_set(data->flags, '+') || is_flag_set(data->flags, ' ');
 	else
-		count = count_digits(input, data, base_size, prefix);
+		count = count_u_digits(input, data, base_size, prefix);
 	if (data->field_width < count)
 		data->field_width = count;
-	if ((data->precision == data->field_width) && (input < 0
-			|| is_flag_set(data->flags, ' ') || is_flag_set(data->flags, '+')))
+	if ((data->precision == data->field_width)
+		&& (is_flag_set(data->flags, ' ') || is_flag_set(data->flags, '+')))
 		data->precision--;
 	return (count);
 }

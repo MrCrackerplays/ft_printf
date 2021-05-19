@@ -29,14 +29,15 @@ int				get_precision(const char *str, int *position, va_list *args);
 char			get_specifier(const char *str, int *position);
 t_length_mod	get_length_mod(const char *str, int *position);
 int				get_flag_value(char c);
+long long		get_input(va_list *arg, t_conv *data);
+/* Utility Functions */
 int				is_flag_set(int flag, char c);
 int				get_specifier_index(char c);
-/* Utility Functions */
 char			*create_width_print(int width, char fill);
-char			*ft_ulitob(unsigned long int n, char *base);
-int				get_count(t_conv *data, long int input, int base_size);
+char			*ft_ullitob(unsigned long int n, char *base);
+int				get_ct(t_conv *data, unsigned long long input, int base_size);
 void			put_prcn(char *print, char *prcn, t_conv *data, int count);
-char			*fill_u_precision(unsigned int input, int count, char *base);
+char			*fill_ull_prcn(unsigned long long input, int count, char *base);
 /* Specifier Parsers */
 char			*parse_specifier_c(va_list *arg, t_conv *data);
 char			*parse_specifier_d(va_list *arg, t_conv *data);

@@ -11,7 +11,7 @@ char	*fill_ull_precision(unsigned long long int input, int count, char *base)
 	precisioned = create_width_print(count, '0');
 	if (precisioned == NULL)
 		return (NULL);
-	itoa = ft_ulitob(input, base);
+	itoa = ft_ullitob(input, base);
 	if (itoa == NULL)
 	{
 		free(precisioned);

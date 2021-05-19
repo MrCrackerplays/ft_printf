@@ -26,7 +26,7 @@ int	get_precision(const char *str, int *position, va_list *args)
 	return (precision);
 }
 
-char	*fill_u_precision(unsigned int input, int count, char *base)
+char	*fill_ull_prcn(unsigned long long input, int count, char *base)
 {
 	char	*precisioned;
 	char	*itoa;
@@ -35,7 +35,7 @@ char	*fill_u_precision(unsigned int input, int count, char *base)
 	precisioned = create_width_print(count, '0');
 	if (precisioned == NULL)
 		return (NULL);
-	itoa = ft_ulitob(input, base);
+	itoa = ft_ullitob(input, base);
 	if (itoa == NULL)
 	{
 		free(precisioned);

@@ -4,18 +4,18 @@
 
 char	*parse_specifier_o(va_list *arg, t_conv *data)
 {
-	unsigned int	input;
-	int				count;
-	char			*print;
-	char			*precisioned;
+	unsigned long long	input;
+	int					count;
+	char				*print;
+	char				*precisioned;
 
 	data->flags &= ~((1 << get_flag_value(' ')) | (1 << get_flag_value('+')));
-	input = va_arg(*arg, unsigned int);
-	count = get_count(data, input, 8);
+	input = get_input(arg, data);
+	count = get_ct(data, input, 8);
 	print = create_width_print(data->field_width, ' ');
 	if (print == NULL)
 		return (NULL);
-	precisioned = fill_u_precision(input, count, "01234567");
+	precisioned = fill_ull_prcn(input, count, "01234567");
 	if (precisioned == NULL)
 	{
 		free(print);

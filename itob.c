@@ -21,7 +21,7 @@ char	*insert_base(size_t count, unsigned long int n, size_t size, char *base)
 	return (converted);
 }
 
-char	*ft_ulitob(unsigned long int n, char *base)
+char	*ft_ullitob(unsigned long int n, char *base)
 {
 	size_t	base_size;
 	size_t	count;
