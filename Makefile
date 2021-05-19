@@ -29,10 +29,4 @@ re: fclean all
 
 bonus: all
 
-run:
-	$(MAKE) && $(CC) $(CFLAGS) main.c libftprintf.a -o a.out && ./a.out
-
-so: $(OBJ_FILES)
-	$(LINK.c) $(CFLAGS) -o $(NAME).so -shared $(OBJ_FILES)
-
-.PHONY: all clean fclean re bonus run so
+.PHONY: all clean fclean re bonus
