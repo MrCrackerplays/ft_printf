@@ -6,6 +6,7 @@ OBJ_FILES = ft_printf.o flags.o field_width.o precision.o specifier.o \
 	length_modifier.o parse_specifier_n.o
 HEADER_FILES = ft_printf.h
 CFLAGS = -Wall -Werror -Wextra
+CC = clang
 
 all: $(NAME)
 
