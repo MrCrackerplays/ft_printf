@@ -6,12 +6,14 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/01 14:54:46 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/09/01 14:54:46 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/09/01 17:26:57 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+
+static const char	*g_length_mods = "hlhhll";
 
 t_length_mod	get_length_mod(const char *str, int *position)
 {

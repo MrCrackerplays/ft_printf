@@ -6,7 +6,7 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/01 14:54:34 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/09/01 14:54:35 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/09/01 17:24:49 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,4 @@ char			*parse_specifier_X(va_list *arg, t_conv *data);
 char			*parse_specifier_percent(va_list *arg, t_conv *data);
 char			*parse_specifier_o(va_list *arg, t_conv *data);
 char			*parse_specifier_n(va_list *arg, t_conv *data);
-/* Global Variables */
-const static char	*g_flags = "-0 +#";
-const static char	*g_specifiers = "diuxXcsp%on";
-const static char	*g_length_mods = "hlhhll";
 #endif

@@ -6,12 +6,14 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/01 14:54:23 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/09/01 14:54:23 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/09/01 17:26:39 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+
+static const char	*g_flags = "-0 +#";
 
 int	get_flag_value(char c)
 {

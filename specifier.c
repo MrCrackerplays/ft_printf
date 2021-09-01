@@ -6,12 +6,14 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/01 14:55:58 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/09/01 14:55:59 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/09/01 17:27:03 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+
+static const char	*g_specifiers = "diuxXcsp%on";
 
 int	get_specifier_index(char c)
 {

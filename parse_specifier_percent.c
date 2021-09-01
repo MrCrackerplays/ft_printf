@@ -6,7 +6,7 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/01 14:55:35 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/09/01 14:55:36 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/09/01 17:27:47 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ char	*parse_specifier_percent(va_list *arg, t_conv *data)
 	char	*print;
 
 	if (arg)
+	{
 		;
+	}
 	print = malloc(sizeof(char) * 2);
 	if (print == NULL)
 		return (NULL);
